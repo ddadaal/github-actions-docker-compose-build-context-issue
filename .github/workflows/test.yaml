@@ -1,0 +1,19 @@
+name: Run docker compose project
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run docker compose project
+        run: docker compose -f nested/docker-compose.yaml up -d
+
+      - run: docker ps
+
